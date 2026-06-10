@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "CheckIn App",
+    "slug": "checkin-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "checkin",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "backgroundColor": "#0D0D0D"
+    },
+    "ios": {
+      "supportsTablet": false,
+      "bundleIdentifier": "com.dev.checkinapp",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Precisamos da sua localização para verificar se você está no local correto para o check-in."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0D0D0D"
+      },
+      "package": "com.dev.checkinapp",
+      "permissions": ["ACCESS_FINE_LOCATION", "ACCESS_COARSE_LOCATION"]
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Precisamos da sua localização para verificar o check-in."
+        }
+      ]
+    ]
+  }
+}
