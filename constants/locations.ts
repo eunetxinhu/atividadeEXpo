@@ -1,5 +1,4 @@
-// Locais-alvo disponíveis para check-in
-// Para trocar o local, basta alterar ACTIVE_LOCATION
+
 export const LOCATIONS = {
   unit_aracaju: {
     name: "UNIT Aracaju",
@@ -30,7 +29,7 @@ export const LOCATIONS = {
     radiusMeters: 1000,
   },
   casa_do_senador: {
-    name: "Casa do Senador",
+    name: "Casa",
     address: "Rua F, 46 - cidade nova, Aracaju - SE",
     latitude: -10.89066,
     longitude: -37.072545,
@@ -39,4 +38,4 @@ export const LOCATIONS = {
 
 };
 
-export const ACTIVE_LOCATION = LOCATIONS.casa_do_senador; 
+export const ACTIVE_LOCATION = LOCATIONS.caju_hub; 

@@ -36,14 +36,11 @@ export default function HomeScreen() {
     setDistancia(null);
     setCoords(null);
 
-    // 1. Solicita permissão
     const { status: permissao } = await Location.requestForegroundPermissionsAsync();
     if (permissao !== "granted") {
       setStatus("denied");
       return;
     }
-
-    // 2. Obtém localização atual (expo-location)
     const localizacao = await Location.getCurrentPositionAsync({
       accuracy: Location.Accuracy.High,
     });
@@ -51,7 +48,6 @@ export default function HomeScreen() {
     const { latitude, longitude } = localizacao.coords;
     setCoords({ lat: latitude, lon: longitude });
 
-    // 3. Calcula distância com Haversine
     const dist = calcularDistancia(
       latitude,
       longitude,
@@ -60,7 +56,6 @@ export default function HomeScreen() {
     );
     setDistancia(Math.round(dist));
 
-    // 4. Decide resultado
     if (dist <= ACTIVE_LOCATION.radiusMeters) {
       setStatus("success");
     } else {
@@ -80,13 +75,12 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <StatusBar style="light" />
 
-      {/* Header */}
+
       <View style={styles.header}>
         <Text style={styles.eyebrow}>PRESENÇA VERIFICADA POR GPS</Text>
-        <Text style={styles.title}>CheckIn</Text>
+        <Text style={styles.title}>Check-IN</Text>
       </View>
 
-      {/* Local alvo */}
       <View style={styles.card}>
         <View style={styles.cardRow}>
           <Ionicons name="location" size={18} color="#F5C518" />
@@ -99,7 +93,6 @@ export default function HomeScreen() {
         </View>
       </View>
 
-      {/* Resultado */}
       {status !== "idle" && status !== "loading" && (
         <View style={[styles.result, styles[`result_${status}`]]}>
           {status === "success" && (
@@ -120,7 +113,7 @@ export default function HomeScreen() {
           )}
           {status === "denied" && (
             <>
-              <Ionicons name="warning" size={48} color="#F59E0B" />
+              <Ionicons name="warning" size={48} color="#ef9b0b" />
               <Text style={styles.resultTitle}>Permissão negada</Text>
               <Text style={styles.resultSub}>
                 Habilite a localização nas configurações do celular.
@@ -166,7 +159,6 @@ export default function HomeScreen() {
         </Animated.View>
       )}
 
-      {/* Rodapé técnico */}
       <Text style={styles.footer}>
         Usa expo-location + fórmula Haversine
       </Text>
@@ -190,7 +182,7 @@ const styles = StyleSheet.create({
   eyebrow: {
     fontSize: 10,
     letterSpacing: 3,
-    color: "#F5C518",
+    color: "#554301",
     fontWeight: "700",
     marginBottom: 8,
   },
